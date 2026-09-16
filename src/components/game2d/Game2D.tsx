@@ -380,7 +380,7 @@ export function Game2D() {
       { speaker: '캐서린', text: '별과 심연을... 아 아니! 찰칵! 임시 주민증 발급 완료입니다. 체류목적: 휴식!' },
       { speaker: '캐서린', text: '이제 중앙 광장의 상인 [각청] 님에게 가셔서 축제 복권을 구매하시고, [시나모롤]과 [탐켄치]를 만나 파티 요리 퀘스트를 도와주세요!' },
     ], () => {
-      showItemToast('별바람 마을 임시 주민증', '유효기간: 오늘 하루 / 체류목적: 논문 탈출 및 휴식 (논문 거부권 발급 완료)', '#4cc9f0');
+      showItemToast('별바람 마을 임시 주민증', '유효기간: 오늘 하루 / 체류목적: 모든 고민과 압박을 내려놓고 마음껏 쉬어가기.', '#4cc9f0');
       updateVillageObjective();
     });
   };
@@ -538,7 +538,7 @@ export function Game2D() {
   };
 
   const openFirstPrizeChest = () => {
-    showItemToast('1등 상품 수령권', '현실 세계에서 수현이가 선물해 주는 특별한 생일 선물 수령권! 🎁', '#ff4500', () => {
+    showItemToast('1등 상품 수령권', '현실 세계에서 수령 가능합니다.', '#ff4500', () => {
       initSuhyeonLetter();
     });
   };
@@ -722,7 +722,7 @@ export function Game2D() {
 
       collectedFruitsRef.current.add(nearTree.id);
       fruitCountRef.current++;
-      showItemToast(`일몰열매 (${fruitCountRef.current}/3)`, '논문 쓰다 지친 뇌 피로와 거북목 통증을 싹 날려주는 열매. (피로도 0)', '#ff4d6d');
+      showItemToast(`피로 회복 일몰열매 (${fruitCountRef.current}/3)`, '오랫동안 햇빛을 머금은 붉은 열매. 한입 베어 물면 몸이 가벼워지고, 복잡했던 생각도 잠시 조용해진다.', '#ff4d6d');
       setObjective(`[탐켄치 퀘스트] 사과나무에서 일몰열매 3개를 수집하자 (${fruitCountRef.current}/3) [E]`);
       if (fruitCountRef.current >= 3) {
         setTimeout(() => initMushroomQuest(), 1400);
@@ -746,7 +746,7 @@ export function Game2D() {
       collectedMushroomsRef.current.add(nearMushroom.id);
       mushroomCountRef.current++;
       if (mushroomCountRef.current < 3) {
-        showItemToast(`기억의 버섯 (${mushroomCountRef.current}/3)`, '막혀있던 연구 주제와 흩어진 아이디어를 명쾌하게 정리해 준다. (아이디어 +20)', '#00f5d4');
+        showItemToast(`기억의 버섯 (${mushroomCountRef.current}/3)`, '은빛 포자를 흩날리는 희귀한 버섯. 머릿속 생각을 제자리로 돌려놓아 머리가 총명해지고 방금 읽은 내용도 떠오르게 해준다.', '#00f5d4');
         setObjective(`[탐켄치 퀘스트] 버섯 골짜기에서 기억의 버섯 3개를 찾자 (${mushroomCountRef.current}/3) [E]`);
       } else {
         showItemToast('기억의 버섯 (3/3)', '모든 기억의 버섯 수집 완료!', '#00f5d4');
@@ -761,7 +761,7 @@ export function Game2D() {
           showItemToast('접근 필요 🌸', '빛나는 달콤달콤 꽃 근처로 가까이 걸어가서 [E] 키를 누르세요!', '#ffd166');
           return;
         }
-        showItemToast('달콤달콤 꽃', '논문 스트레스와 지도교수님 피드백 압박을 깨끗이 잊게 해주는 힐링의 꽃. (스트레스 -50)', '#ffd166', () => {
+        showItemToast('달콤달콤 꽃', '바람이 잘 드는 들판에서 자라는 향긋한 꽃. 꽃잎 하나만 넣어도 쓴맛이 부드러워진다. 힘든 하루에도 달콤한 건 조금쯤 필요하다.', '#ffd166', () => {
           stepRef.current = 1;
           setObjective('벤치에 앉아서 잠깐 쉬자 [E]');
         });
@@ -775,8 +775,8 @@ export function Game2D() {
       }
     } else if (scene === 'DUNGEON') {
       if (stepRef.current === 0) {
-        showItemToast('수정자의 깃털', '최종_최종_진짜최종.pdf 수정을 견디는 수현이의 부적. (멘탈 +100)', '#e2afff');
-        showItemToast('마감의 시계', '제출 마감 직전 초스피드 타이핑 속도와 초인적 집중력을 발휘하게 해준다.', '#ffd166');
+        showItemToast('수정자의 깃털', '문서를 수없이 고치고 다시 열어봐도 마르지 않는 여유와 인내심을 선물하는 깃털.', '#e2afff');
+        showItemToast('마감의 시계', '마감이 가까워질수록 초침이 빨라지는 이상한 시계. 짧은 시간 동안 놀라운 집중력을 주지만 사라진 시간만큼 잠도 함께 사라진다고 한다.', '#ffd166');
         stepRef.current = 1;
         setObjective('유적 깊은 곳으로 가자');
       } else {
@@ -885,7 +885,7 @@ export function Game2D() {
         isPoroRescuedRef.current = true;
         poroPosRef.current.x = 740;
         poroPosRef.current.y = 260;
-        showItemToast('동료 푸푸(포로) 구출!', '논문 쓰다 지칠 때 옆에서 푹신하게 힐링해 주는 전담 귀요미 응원단!', '#ff758f', () => {
+        showItemToast('동료 푸푸(포로) 구출!', '복슬복슬 귀여운 포로! 지치고 외로울 때 옆에서 따뜻한 온기와 힐링을 선물한다.', '#ff758f', () => {
           triggerDialogue([
             { speaker: '푸푸(포로)', text: '헤헤~! (태일이 옆으로 달라붙으며 신나게 꼬리를 든다!)' },
             { speaker: '태일', text: '다행이다! 포로야, 이제부터 나랑 계속 같이 가자!' },
@@ -896,13 +896,13 @@ export function Game2D() {
         });
       } else if (scene === 'COMBAT1') {
         showItemToast('기억의 버섯 획득 완료', '모든 기억의 버섯을 되찾았습니다!', '#00f5d4', () => {
-          showItemToast('낡은 자동차 키', '연구실을 벗어나 밤바람 맞으며 수현이와 드라이브했던 자유로운 밤의 기억.', '#ffd166', () => {
+          showItemToast('낡은 자동차 키', '모서리가 조금 닳은 오래된 자동차 키. 목적지도 없이 누군가와 오래 돌아다녔던 밤들의 기억이 희미하게 남아 있다.', '#ffd166', () => {
             initRiverRest();
           });
         });
       } else if (scene === 'REVISION_BOSS') {
-        showItemToast('논문 승인의 성배', '지도교수님의 "수고했네, 승인!" 한마디를 불러오는 전설의 성배.', '#ff4500', () => {
-          showItemToast('수현이와의 추억 조각', '논문보다 훨씬 더 소중한, 함께 쌓아온 둘만의 예쁜 추억 조각.', '#e2afff', () => {
+        showItemToast('작은 티켓', '글자는 거의 지워졌지만 이상하게 버리기 어렵다. 어디론가 함께 갔던 날, 별것 아닌 일에도 많이 웃었던 기억이 묻어 있다.', '#ffd166', () => {
+          showItemToast('익숙한 향이 나는 조각', '어디에서 떨어져 나온 것인지 알 수 없는 작은 조각. 가까이 가져가면 처음 맡는 향인데도 이상할 만큼 익숙하고 편안하다.', '#e2afff', () => {
             initSunsetJourney();
           });
         });
