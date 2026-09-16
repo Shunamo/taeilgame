@@ -3887,7 +3887,7 @@ export function Game2D() {
       )}
 
       {/* TOUCH & MOUSE CONTROLS (VIRTUAL ANALOG JOYSTICK & ACTION BUTTONS) */}
-      {scene !== 'TITLE' && scene !== 'PROLOGUE' && scene !== 'FALL' && scene !== 'END_SCREEN' && !dialogue && !showLotteryGrid && !showRegChoices && !showLetterModal && !showPhonePopup && (
+      {scene !== 'TITLE' && scene !== 'FALL' && scene !== 'END_SCREEN' && !dialogue && !showLotteryGrid && !showRegChoices && !showLetterModal && !showPhonePopup && (
         <div
           style={{
             position: 'absolute',
