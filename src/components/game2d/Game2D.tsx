@@ -3546,17 +3546,17 @@ export function Game2D() {
         }}
       />
 
-      {/* OBJECTIVE BANNER (COMPACT 50% SCALE) */}
+      {/* OBJECTIVE BANNER (COMPACT) */}
       {objective && scene !== 'TITLE' && scene !== 'END_SCREEN' && scene !== 'COOKIE' && (
         <div
           style={{
             position: 'absolute',
-            top: 10,
-            left: 12,
-            background: 'rgba(0, 0, 0, 0.82)',
+            top: 8,
+            left: 10,
+            background: 'rgba(0, 0, 0, 0.85)',
             color: '#ffd700',
-            padding: '4px 10px',
-            borderRadius: '6px',
+            padding: '3px 8px',
+            borderRadius: '4px',
             border: '1px solid #ffd700',
             fontSize: '11px',
             fontWeight: 'bold',
@@ -3567,22 +3567,22 @@ export function Game2D() {
         </div>
       )}
 
-      {/* STATUS ANIM TOAST (COMPACT 50% SCALE) */}
+      {/* STATUS ANIM TOAST (COMPACT) */}
       {statusAnimation && (
         <div
           style={{
             position: 'absolute',
-            top: 42,
-            left: 12,
+            top: 34,
+            left: 10,
             background: 'rgba(10, 20, 40, 0.88)',
             color: '#4cc9f0',
-            padding: '4px 10px',
-            borderRadius: '6px',
+            padding: '3px 8px',
+            borderRadius: '4px',
             border: '1px solid #4cc9f0',
             fontSize: '10px',
             zIndex: 90,
             display: 'flex',
-            gap: '8px',
+            gap: '6px',
           }}
         >
           <div>피로도: {statusAnimation.fatigue}</div>
@@ -3613,32 +3613,32 @@ export function Game2D() {
         </button>
       )}
 
-      {/* DIALOGUE BOX (COMPACT 50% SCALE) */}
+      {/* DIALOGUE BOX (COMPACT BOTTOM-LEFT) */}
       {dialogue && (
         <div
           onClick={advanceDialogue}
           style={{
             position: 'absolute',
-            bottom: 12,
-            width: '85%',
-            maxWidth: '460px',
+            bottom: 10,
+            left: 10,
+            maxWidth: '340px',
             background: 'rgba(10, 15, 35, 0.94)',
             border: '1.5px solid #ffd700',
-            borderRadius: '8px',
-            padding: '8px 14px',
+            borderRadius: '6px',
+            padding: '5px 9px',
             color: '#ffffff',
             cursor: 'pointer',
             zIndex: 110,
             boxShadow: '0 4px 15px rgba(0,0,0,0.6)',
           }}
         >
-          <div style={{ color: '#ffd700', fontWeight: 'bold', fontSize: '13px', marginBottom: '3px' }}>
+          <div style={{ color: '#ffd700', fontWeight: 'bold', fontSize: '13px', marginBottom: '2px' }}>
             {dialogue[dialogueIndex]?.speaker}
           </div>
-          <div style={{ fontSize: '11.5px', lineHeight: '1.4' }}>
+          <div style={{ fontSize: '11.5px', lineHeight: '1.35' }}>
             {dialogue[dialogueIndex]?.text}
           </div>
-          <div style={{ textAlign: 'right', fontSize: '9.5px', color: '#aaa', marginTop: '4px' }}>
+          <div style={{ textAlign: 'right', fontSize: '9px', color: '#aaa', marginTop: '3px' }}>
             ▶ 클릭 또는 [Space/Enter/E] 로 진행
           </div>
         </div>
