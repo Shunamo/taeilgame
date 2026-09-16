@@ -911,7 +911,7 @@ export function Game2D() {
       if (!dialogue && !showLotteryGrid && !showRegChoices && !showLetterModal && scene !== 'FALL' && scene !== 'QUIET_ROOM') {
         let dx = 0;
         let dy = 0;
-        let speed = 2.4;
+        let speed = 3.8;
 
         if (keysRef.current['w'] || keysRef.current['ArrowUp'] || keysRef.current['btnUp']) dy -= 1;
         if (keysRef.current['s'] || keysRef.current['ArrowDown'] || keysRef.current['btnDown']) dy += 1;
@@ -3530,39 +3530,43 @@ export function Game2D() {
         }}
       />
 
-      {/* Top Left Header */}
-      {objective && (
+      {/* OBJECTIVE BANNER (COMPACT 50% SCALE) */}
+      {objective && scene !== 'TITLE' && scene !== 'END_SCREEN' && scene !== 'COOKIE' && (
         <div
           style={{
             position: 'absolute',
-            top: 16,
-            left: 16,
-            background: 'rgba(0, 0, 0, 0.85)',
+            top: 10,
+            left: 12,
+            background: 'rgba(0, 0, 0, 0.82)',
             color: '#ffd700',
-            padding: '8px 16px',
-            borderRadius: '8px',
+            padding: '4px 10px',
+            borderRadius: '6px',
             border: '1px solid #ffd700',
-            fontSize: '14px',
+            fontSize: '11px',
             fontWeight: 'bold',
+            zIndex: 90,
           }}
         >
           [목표] {objective}
         </div>
       )}
 
-      {/* Status Anim Toast */}
+      {/* STATUS ANIM TOAST (COMPACT 50% SCALE) */}
       {statusAnimation && (
         <div
           style={{
             position: 'absolute',
-            top: 70,
-            left: 16,
-            background: 'rgba(10, 20, 40, 0.9)',
+            top: 42,
+            left: 12,
+            background: 'rgba(10, 20, 40, 0.88)',
             color: '#4cc9f0',
-            padding: '10px 16px',
-            borderRadius: '8px',
+            padding: '4px 10px',
+            borderRadius: '6px',
             border: '1px solid #4cc9f0',
-            fontSize: '13px',
+            fontSize: '10px',
+            zIndex: 90,
+            display: 'flex',
+            gap: '8px',
           }}
         >
           <div>피로도: {statusAnimation.fatigue}</div>
@@ -3593,30 +3597,32 @@ export function Game2D() {
         </button>
       )}
 
-      {/* DIALOGUE BOX */}
+      {/* DIALOGUE BOX (COMPACT 50% SCALE) */}
       {dialogue && (
         <div
           onClick={advanceDialogue}
           style={{
             position: 'absolute',
-            bottom: 30,
-            width: '90%',
-            maxWidth: '800px',
+            bottom: 12,
+            width: '85%',
+            maxWidth: '460px',
             background: 'rgba(10, 15, 35, 0.94)',
-            border: '2px solid #ffd700',
-            borderRadius: '12px',
-            padding: '16px 24px',
+            border: '1.5px solid #ffd700',
+            borderRadius: '8px',
+            padding: '8px 14px',
             color: '#ffffff',
             cursor: 'pointer',
+            zIndex: 110,
+            boxShadow: '0 4px 15px rgba(0,0,0,0.6)',
           }}
         >
-          <div style={{ color: '#ffd700', fontWeight: 'bold', fontSize: '16px', marginBottom: '6px' }}>
+          <div style={{ color: '#ffd700', fontWeight: 'bold', fontSize: '13px', marginBottom: '3px' }}>
             {dialogue[dialogueIndex]?.speaker}
           </div>
-          <div style={{ fontSize: '15px', lineHeight: '1.5' }}>
+          <div style={{ fontSize: '11.5px', lineHeight: '1.4' }}>
             {dialogue[dialogueIndex]?.text}
           </div>
-          <div style={{ textAlign: 'right', fontSize: '12px', color: '#888', marginTop: '6px' }}>
+          <div style={{ textAlign: 'right', fontSize: '9.5px', color: '#aaa', marginTop: '4px' }}>
             ▶ 클릭 또는 [Space/Enter/E] 로 진행
           </div>
         </div>
@@ -3694,25 +3700,26 @@ export function Game2D() {
         </div>
       )}
 
-      {/* ITEM TOAST NOTIFICATION */}
+      {/* ITEM TOAST NOTIFICATION (COMPACT) */}
       {toast && (
         <div
           style={{
             position: 'absolute',
-            top: 80,
+            top: 45,
             background: 'rgba(20, 20, 40, 0.95)',
-            border: `2px solid ${toast.iconColor}`,
-            borderRadius: '10px',
-            padding: '14px 24px',
+            border: `1.5px solid ${toast.iconColor}`,
+            borderRadius: '8px',
+            padding: '8px 16px',
             color: '#fff',
             textAlign: 'center',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.6)',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.6)',
+            zIndex: 100,
           }}
         >
-          <div style={{ color: toast.iconColor, fontWeight: 'bold', fontSize: '16px', marginBottom: '4px' }}>
+          <div style={{ color: toast.iconColor, fontWeight: 'bold', fontSize: '12px', marginBottom: '2px' }}>
             🎁 획득: {toast.title}
           </div>
-          <div style={{ fontSize: '13px', color: '#ccc' }}>{toast.desc}</div>
+          <div style={{ fontSize: '10.5px', color: '#ccc' }}>{toast.desc}</div>
         </div>
       )}
 
