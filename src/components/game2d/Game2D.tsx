@@ -123,6 +123,7 @@ export function Game2D() {
   const hasTahmQuestRef = useRef<boolean>(false);
   const meadowStartTimeRef = useRef<number>(0);
   const collectedMushroomsRef = useRef<Set<number>>(new Set());
+  const collectedFruitsRef = useRef<Set<number>>(new Set());
 
   // Virtual Analog Joystick State & Event Handlers (iOS Safari, Chrome, Mouse)
   const joystickVectorRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -424,13 +425,15 @@ export function Game2D() {
   const initFruitQuest = () => {
     setScene('FRUIT_QUEST');
     fruitCountRef.current = 0;
-    setObjective('[탐켄치 퀘스트] 사과나무에서 일몰열매 3개를 수집하자 (0/3)');
+    collectedFruitsRef.current.clear();
+    setObjective('[탐켄치 퀘스트] 사과나무에서 일몰열매 3개를 수집하자 (0/3) [E]');
   };
 
   const initMushroomQuest = () => {
     setScene('MUSHROOM_QUEST');
     mushroomCountRef.current = 0;
-    setObjective('[탐켄치 퀘스트] 버섯 골짜기에서 기억의 버섯 2개를 찾자 (0/2)');
+    collectedMushroomsRef.current.clear();
+    setObjective('[탐켄치 퀘스트] 버섯 골짜기에서 기억의 버섯 3개를 찾자 (0/3) [E]');
   };
 
   const startCombat1 = () => {
@@ -674,11 +677,11 @@ export function Game2D() {
         } else if (!hasTahmQuestRef.current) {
           triggerDialogue([
             { speaker: '탐켄치', text: '허허! 파티를 위한 특제 한입 탕 요리를 보글보글 끓이는 중이라네.' },
-            { speaker: '탐켄치', text: '사과나무의 [일몰열매] 3개와 숲속 [기억의 버섯] 2개가 들어가야 국물이 깊어진다네!' },
+            { speaker: '탐켄치', text: '사과나무의 [일몰열매 3개]와 숲속 [기억의 버섯 3개]가 들어가야 국물이 깊어진다네!' },
             { speaker: '태일', text: '맛있는 요리 재료군요! 신선하게 구해다 드릴게요.' },
           ], () => {
             hasTahmQuestRef.current = true;
-            showItemToast('[탐켄치 퀘스트] 수락 완료!', '사과나무 [일몰열매 3개] & 숲속 [기억의 버섯 2개] 구하기', '#00f5d4');
+            showItemToast('[탐켄치 퀘스트] 수락 완료!', '사과나무 [일몰열매 3개] & 숲속 [기억의 버섯 3개] 구하기', '#00f5d4');
             updateVillageObjective();
             if (hasCinnamorollQuestRef.current) {
               setTimeout(() => initQuestPrep(), 1200);
@@ -686,7 +689,7 @@ export function Game2D() {
           });
         } else {
           triggerDialogue([
-            { speaker: '탐켄치', text: '사과나무의 [일몰열매 3개]와 숲속의 [기억의 버섯 2개]를 구해다 주시게나! 🍲' },
+            { speaker: '탐켄치', text: '사과나무의 [일몰열매 3개]와 숲속의 [기억의 버섯 3개]를 구해다 주시게나! 🍲' },
           ]);
         }
       } else if (distPurpleGirl < 80) {
@@ -702,16 +705,27 @@ export function Game2D() {
         ]);
       }
     } else if (scene === 'FRUIT_QUEST') {
-      const distTree = Math.hypot(p.x - 300, p.y - 270);
-      if (distTree > 95) {
+      const appleTrees = [
+        { id: 1, x: 240, y: 220 },
+        { id: 2, x: 520, y: 200 },
+        { id: 3, x: 780, y: 240 },
+      ];
+      const nearTree = appleTrees.find((t) => {
+        if (collectedFruitsRef.current.has(t.id)) return false;
+        return Math.hypot(p.x - t.x, p.y - t.y) < 95;
+      });
+
+      if (!nearTree) {
         showItemToast('접근 필요 🍎', '사과나무 근처로 가까이 걸어가서 [E] 키를 누르세요!', '#ff4d6d');
         return;
       }
+
+      collectedFruitsRef.current.add(nearTree.id);
       fruitCountRef.current++;
-      showItemToast('피로 회복 일몰열매', '사과나무 가지에서 따낸 붉은 일몰열매. 한입 베어 물면 피로가 감쪽같이 사라진다.', '#ff4d6d');
-      setObjective(`[탐켄치 퀘스트] 사과나무에서 일몰열매 3개를 수집하자 (${fruitCountRef.current}/3)`);
+      showItemToast(`일몰열매 (${fruitCountRef.current}/3)`, '사과나무 가지에서 따낸 붉은 일몰열매. 피로가 감쪽같이 사라진다.', '#ff4d6d');
+      setObjective(`[탐켄치 퀘스트] 사과나무에서 일몰열매 3개를 수집하자 (${fruitCountRef.current}/3) [E]`);
       if (fruitCountRef.current >= 3) {
-        setTimeout(() => initMushroomQuest(), 1500);
+        setTimeout(() => initMushroomQuest(), 1400);
       }
     } else if (scene === 'MUSHROOM_QUEST') {
       const mushrooms = [
@@ -731,10 +745,11 @@ export function Game2D() {
 
       collectedMushroomsRef.current.add(nearMushroom.id);
       mushroomCountRef.current++;
-      if (mushroomCountRef.current === 1) {
-        showItemToast('기억의 버섯 (1/2)', '흩어진 생각을 하나씩 제자리로 돌려놓는 신비로운 픽셀 버섯.', '#00f5d4');
-        setObjective('[탐켄치 퀘스트] 버섯 골짜기에서 기억의 버섯 2개를 찾자 (1/2)');
+      if (mushroomCountRef.current < 3) {
+        showItemToast(`기억의 버섯 (${mushroomCountRef.current}/3)`, '흩어진 생각을 하나씩 제자리로 돌려놓는 신비로운 픽셀 버섯.', '#00f5d4');
+        setObjective(`[탐켄치 퀘스트] 버섯 골짜기에서 기억의 버섯 3개를 찾자 (${mushroomCountRef.current}/3) [E]`);
       } else {
+        showItemToast('기억의 버섯 (3/3)', '모든 기억의 버섯 수집 완료!', '#00f5d4');
         triggerDialogue([{ speaker: '태일', text: '마지막 기억의 버섯이다! 어? 어디선가 무시무시한 포효 소리가...!' }], () => {
           startCombat1();
         });
@@ -960,8 +975,14 @@ export function Game2D() {
         // Automatic Scene Transition Triggers when reaching map exit (right side)
         if (scene === 'MEADOW' && p.x > 840) {
           initVillage();
-        } else if (scene === 'VILLAGE' && p.x > 850 && regOrigin) {
-          initQuestPrep();
+        } else if (scene === 'VILLAGE' && p.x > 840) {
+          if (!hasRegisteredRef.current || !hasLotteryRef.current || !hasCinnamorollQuestRef.current || !hasTahmQuestRef.current) {
+            p.x = 840;
+            updateVillageObjective();
+            showItemToast('마을 퀘스트 미완료 ⚠️', '주민등록, 복권, 시나모롤, 탐켄치 퀘스트를 모두 완료해야 숲으로 이동할 수 있습니다!', '#ff4d6d');
+          } else {
+            initQuestPrep();
+          }
         } else if (scene === 'SUNSET_JOURNEY' && p.x > 840) {
           initMansionExt();
         }
@@ -3613,19 +3634,21 @@ export function Game2D() {
         </button>
       )}
 
-      {/* DIALOGUE BOX (COMPACT BOTTOM-LEFT) */}
+      {/* DIALOGUE BOX (COMPACT BOTTOM-CENTER) */}
       {dialogue && (
         <div
           onClick={advanceDialogue}
           style={{
             position: 'absolute',
-            bottom: 10,
-            left: 10,
-            maxWidth: '340px',
+            bottom: 12,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '85%',
+            maxWidth: '400px',
             background: 'rgba(10, 15, 35, 0.94)',
             border: '1.5px solid #ffd700',
             borderRadius: '6px',
-            padding: '5px 9px',
+            padding: '5px 12px',
             color: '#ffffff',
             cursor: 'pointer',
             zIndex: 110,
