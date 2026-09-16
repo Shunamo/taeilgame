@@ -69,6 +69,22 @@ export function Game2D() {
   const [showLetterModal, setShowLetterModal] = useState<boolean>(false);
   const [showPhonePopup, setShowPhonePopup] = useState<boolean>(false);
   const [statusAnimation, setStatusAnimation] = useState<{ fatigue: number; focus: number; back: number } | null>(null);
+  const [isPortrait, setIsPortrait] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkOrientation = () => {
+      if (typeof window !== 'undefined') {
+        setIsPortrait(window.innerHeight > window.innerWidth);
+      }
+    };
+    checkOrientation();
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('orientationchange', checkOrientation);
+    return () => {
+      window.removeEventListener('resize', checkOrientation);
+      window.removeEventListener('orientationchange', checkOrientation);
+    };
+  }, []);
 
   // Gameplay references
   const playerRef = useRef({
@@ -3954,6 +3970,57 @@ export function Game2D() {
           </div>
         </div>
       )}
+
+      {/* PORTRAIT ORIENTATION FORCE WARNING OVERLAY */}
+      <div
+        className="portrait-warning-overlay"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 999999,
+          background: 'rgba(10, 10, 18, 0.96)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          display: isPortrait ? 'flex' : 'none',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#ffffff',
+          textAlign: 'center',
+          padding: '24px',
+          boxSizing: 'border-box',
+          pointerEvents: 'auto',
+        }}
+      >
+        <div
+          style={{
+            fontSize: '56px',
+            marginBottom: '16px',
+            animation: 'rotatePhone 2.5s infinite ease-in-out',
+          }}
+        >
+          📱
+        </div>
+        <h2 style={{ fontSize: '22px', fontWeight: 'bold', color: '#ffd700', marginBottom: '10px', textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
+          화면을 가로로 돌려주세요!
+        </h2>
+        <p style={{ fontSize: '13.5px', color: '#d0d0e0', lineHeight: 1.6, maxWidth: '280px', margin: 0 }}>
+          태일이 게임은 가로 모드(Landscape)에 최적화되어 있습니다.<br />
+          화면 자동 회전을 켜고 핸드폰을 가로로 기울여주세요.
+        </p>
+        <style>{`
+          @keyframes rotatePhone {
+            0%, 15% { transform: rotate(0deg); }
+            45%, 65% { transform: rotate(-90deg); }
+            95%, 100% { transform: rotate(0deg); }
+          }
+          @media (orientation: portrait) {
+            .portrait-warning-overlay {
+              display: flex !important;
+            }
+          }
+        `}</style>
+      </div>
     </div>
   );
 }
