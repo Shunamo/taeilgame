@@ -1840,17 +1840,17 @@ export function Game2D() {
     }
 
     ctx.fillStyle = '#ffd700';
-    ctx.font = 'bold 42px sans-serif';
+    ctx.font = 'bold 40px sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('별빛 저택으로 가는 길', 480, 200);
+    ctx.fillText('별빛 저택으로 가는 길', 480, 140);
 
     ctx.fillStyle = '#ffffff';
-    ctx.font = '22px sans-serif';
-    ctx.fillText('노태일 생일 퀘스트', 480, 260);
+    ctx.font = 'bold 22px sans-serif';
+    ctx.fillText('노태일 생일 퀘스트', 480, 195);
 
     ctx.fillStyle = '#88aaff';
     ctx.font = '15px sans-serif';
-    ctx.fillText('"생일 하루 정도는 아무것도 고치지 않아도 된다."', 480, 320);
+    ctx.fillText('"생일 하루 정도는 아무것도 고치지 않아도 된다."', 480, 250);
   };
 
   const drawPrologue = (ctx: CanvasRenderingContext2D, p: any, time: number) => {
@@ -3618,16 +3618,17 @@ export function Game2D() {
           onClick={initPrologue}
           style={{
             position: 'absolute',
-            bottom: 110,
-            padding: '16px 48px',
-            fontSize: '22px',
+            bottom: 40,
+            padding: '12px 36px',
+            fontSize: '18px',
             fontWeight: 'bold',
             color: '#000000',
             background: '#ffd700',
             border: 'none',
-            borderRadius: '30px',
+            borderRadius: '24px',
             cursor: 'pointer',
             boxShadow: '0 4px 20px rgba(255, 215, 0, 0.6)',
+            zIndex: 110,
           }}
         >
           START (게임 시작)
@@ -3886,7 +3887,7 @@ export function Game2D() {
       )}
 
       {/* TOUCH & MOUSE CONTROLS (VIRTUAL ANALOG JOYSTICK & ACTION BUTTONS) */}
-      {scene !== 'END_SCREEN' && !dialogue && !showLotteryGrid && !showRegChoices && !showLetterModal && !showPhonePopup && (
+      {scene !== 'TITLE' && scene !== 'PROLOGUE' && scene !== 'FALL' && scene !== 'END_SCREEN' && !dialogue && !showLotteryGrid && !showRegChoices && !showLetterModal && !showPhonePopup && (
         <div
           style={{
             position: 'absolute',
