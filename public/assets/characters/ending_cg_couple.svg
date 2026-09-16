@@ -1,0 +1,457 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <!-- Night sky gradient -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#060a1a"/>
+      <stop offset="45%"  stop-color="#0d1530"/>
+      <stop offset="100%" stop-color="#1a2048"/>
+    </linearGradient>
+    <!-- Ground / floor warm glow -->
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#2a1808"/>
+      <stop offset="100%" stop-color="#180e04"/>
+    </linearGradient>
+    <!-- Central warm light (lanterns / magic) -->
+    <radialGradient id="warm_glow" cx="0.5" cy="0.65" r="0.55">
+      <stop offset="0%"   stop-color="#ffd080" stop-opacity="0.55"/>
+      <stop offset="50%"  stop-color="#ff9020" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ff6010" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Soft warm light from cake area -->
+    <radialGradient id="cake_glow" cx="0.5" cy="0.85" r="0.3">
+      <stop offset="0%"   stop-color="#ffcc60" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#ff8820" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Character skin — Taeil -->
+    <linearGradient id="sk_t" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#f5c8a0"/>
+      <stop offset="100%" stop-color="#d9a070"/>
+    </linearGradient>
+    <!-- Character skin — Suhyeon -->
+    <linearGradient id="sk_s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#fdd8b8"/>
+      <stop offset="100%" stop-color="#dfa880"/>
+    </linearGradient>
+    <!-- Hair dark brown -->
+    <linearGradient id="h_dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#3a1e08"/>
+      <stop offset="100%" stop-color="#1a0c04"/>
+    </linearGradient>
+    <!-- Taeil shirt -->
+    <pattern id="check" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#7a4c2a"/>
+      <rect width="4" height="8" fill="#5a3418" opacity="0.4"/>
+      <rect width="8" height="4" fill="#6a3e20" opacity="0.4"/>
+    </pattern>
+    <!-- Lantern glow -->
+    <radialGradient id="lantern_g" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0%"   stop-color="#ffee88" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ffaa20" stop-opacity="0.5"/>
+    </radialGradient>
+    <!-- Cake frosting -->
+    <linearGradient id="cake_fr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#fff8f0"/>
+      <stop offset="100%" stop-color="#f0e4d4"/>
+    </linearGradient>
+    <!-- Star twinkle -->
+    <radialGradient id="star_g" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%"   stop-color="white" stop-opacity="1"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ════════════════════════════════ BACKGROUND ════════════════════════════ -->
+
+  <!-- Night sky -->
+  <rect x="0" y="0" width="800" height="500" fill="url(#sky)"/>
+
+  <!-- Stars (scattered) -->
+  <g opacity="0.85">
+    <circle cx="40"  cy="30"  r="1.2" fill="white"/>
+    <circle cx="85"  cy="18"  r="0.8" fill="white"/>
+    <circle cx="130" cy="45"  r="1.5" fill="white"/>
+    <circle cx="170" cy="22"  r="0.9" fill="white"/>
+    <circle cx="220" cy="38"  r="1.2" fill="white"/>
+    <circle cx="280" cy="15"  r="1.8" fill="white"/>
+    <circle cx="330" cy="30"  r="0.9" fill="white"/>
+    <circle cx="400" cy="12"  r="1.4" fill="white"/>
+    <circle cx="450" cy="28"  r="0.8" fill="white"/>
+    <circle cx="510" cy="18"  r="1.6" fill="white"/>
+    <circle cx="560" cy="40"  r="1.0" fill="white"/>
+    <circle cx="620" cy="22"  r="1.3" fill="white"/>
+    <circle cx="670" cy="35"  r="0.7" fill="white"/>
+    <circle cx="720" cy="15"  r="1.5" fill="white"/>
+    <circle cx="765" cy="42"  r="1.0" fill="white"/>
+    <circle cx="55"  cy="70"  r="0.8" fill="#ffe0a0"/>
+    <circle cx="195" cy="60"  r="1.1" fill="#ffe0a0"/>
+    <circle cx="360" cy="55"  r="0.9" fill="white"/>
+    <circle cx="490" cy="65"  r="1.2" fill="#ffe0b0"/>
+    <circle cx="640" cy="58"  r="0.8" fill="white"/>
+    <circle cx="745" cy="68"  r="1.3" fill="white"/>
+    <!-- Twinkling star highlights -->
+    <circle cx="400" cy="12" r="4" fill="url(#star_g)" opacity="0.4"/>
+    <circle cx="130" cy="45" r="3" fill="url(#star_g)" opacity="0.35"/>
+    <circle cx="620" cy="22" r="3.5" fill="url(#star_g)" opacity="0.4"/>
+  </g>
+
+  <!-- Fantasy crescent moon -->
+  <path d="M 680,25 C 668,30 662,46 668,58 C 656,50 652,36 660,24 C 664,18 674,16 680,25 Z"
+        fill="#f8f0c0" opacity="0.88"/>
+
+  <!-- Soft cloud wisps -->
+  <ellipse cx="150" cy="80" rx="80" ry="22" fill="#1a2040" opacity="0.6"/>
+  <ellipse cx="620" cy="90" rx="70" ry="18" fill="#182038" opacity="0.5"/>
+
+  <!-- ── BACKGROUND FANTASY COTTAGE / SETTING ── -->
+  <!-- Cottage walls -->
+  <rect x="220" y="140" width="360" height="240" rx="4" fill="#1e1408"/>
+  <!-- Cottage warm lit windows (L) -->
+  <rect x="248" y="170" width="60" height="75" rx="4" fill="#ffcc60" opacity="0.75"/>
+  <line x1="278" y1="170" x2="278" y2="245" stroke="#c08030" stroke-width="2" opacity="0.6"/>
+  <line x1="248" y1="207" x2="308" y2="207" stroke="#c08030" stroke-width="2" opacity="0.6"/>
+  <!-- Cottage warm lit windows (R) -->
+  <rect x="492" y="170" width="60" height="75" rx="4" fill="#ffcc60" opacity="0.75"/>
+  <line x1="522" y1="170" x2="522" y2="245" stroke="#c08030" stroke-width="2" opacity="0.6"/>
+  <line x1="492" y1="207" x2="552" y2="207" stroke="#c08030" stroke-width="2" opacity="0.6"/>
+  <!-- Cottage door -->
+  <rect x="368" y="295" width="64" height="85" rx="5" fill="#3a2010"/>
+  <rect x="374" y="301" width="24" height="38" rx="2" fill="#2a1808"/>
+  <rect x="402" y="301" width="24" height="38" rx="2" fill="#2a1808"/>
+  <!-- Door knob -->
+  <circle cx="398" cy="343" r="4" fill="#c0a020"/>
+  <!-- Cottage roof -->
+  <path d="M 210,142 L 400,58 L 590,142 Z" fill="#2a1808"/>
+  <path d="M 215,140 L 400,62 L 585,140 Z" fill="#3a2010"/>
+  <!-- Cottage chimney -->
+  <rect x="460" y="75" width="28" height="60" fill="#2a1808"/>
+  <!-- Chimney smoke wisps -->
+  <path d="M 474,75 C 470,60 478,48 472,36" fill="none" stroke="#445070" stroke-width="4" opacity="0.35" stroke-linecap="round"/>
+  <path d="M 480,70 C 484,55 476,43 482,30" fill="none" stroke="#445070" stroke-width="3" opacity="0.25" stroke-linecap="round"/>
+  <!-- Ivy / vines on cottage walls -->
+  <path d="M 225,180 C 230,165 238,158 245,162 C 238,170 232,180 228,195 Z" fill="#2a5018" opacity="0.7"/>
+  <path d="M 226,200 C 232,185 240,180 246,184 C 240,192 232,202 228,218 Z" fill="#2a5018" opacity="0.7"/>
+  <path d="M 570,185 C 564,170 556,162 552,165 C 558,173 564,185 562,200 Z" fill="#2a5018" opacity="0.7"/>
+
+  <!-- ── FAIRY LIGHTS STRING ── -->
+  <path d="M 180,120 C 250,145 350,130 400,140 C 450,130 550,145 620,120"
+        fill="none" stroke="#8a7040" stroke-width="1" opacity="0.5"/>
+  <!-- Light bulbs on string -->
+  <g>
+    <ellipse cx="215" cy="134" rx="5" ry="7" fill="#ffe870" opacity="0.9"/>
+    <ellipse cx="215" cy="132" rx="3" ry="2" fill="white" opacity="0.6"/>
+    <ellipse cx="270" cy="142" rx="5" ry="7" fill="#ff9040" opacity="0.85"/>
+    <ellipse cx="320" cy="132" rx="5" ry="7" fill="#ffe870" opacity="0.9"/>
+    <ellipse cx="370" cy="140" rx="5" ry="7" fill="#ff9040" opacity="0.85"/>
+    <ellipse cx="400" cy="138" rx="5" ry="7" fill="#ffe870" opacity="0.9"/>
+    <ellipse cx="430" cy="140" rx="5" ry="7" fill="#ff9040" opacity="0.85"/>
+    <ellipse cx="480" cy="132" rx="5" ry="7" fill="#ffe870" opacity="0.9"/>
+    <ellipse cx="530" cy="142" rx="5" ry="7" fill="#ff9040" opacity="0.85"/>
+    <ellipse cx="585" cy="134" rx="5" ry="7" fill="#ffe870" opacity="0.9"/>
+    <!-- Glow halos around bulbs -->
+    <circle cx="215" cy="134" r="10" fill="#ffe870" opacity="0.15"/>
+    <circle cx="400" cy="138" r="12" fill="#ffe870" opacity="0.18"/>
+    <circle cx="585" cy="134" r="10" fill="#ff9040" opacity="0.15"/>
+  </g>
+
+  <!-- ── LANTERNS ── -->
+  <!-- Left lantern on post -->
+  <line x1="175" y1="160" x2="175" y2="380" stroke="#5a4020" stroke-width="5"/>
+  <rect x="155" y="155" width="40" height="55" rx="6" fill="#3a2808"/>
+  <rect x="160" y="160" width="30" height="44" rx="4" fill="#ffdd60" opacity="0.85"/>
+  <rect x="153" y="152" width="44" height="7"  rx="2" fill="#2a1808"/>
+  <rect x="153" y="209" width="44" height="7"  rx="2" fill="#2a1808"/>
+  <circle cx="175" cy="156" r="5" fill="#c08020"/>
+  <!-- Lantern glow -->
+  <circle cx="175" cy="182" r="40" fill="#ffcc60" opacity="0.18"/>
+
+  <!-- Right lantern -->
+  <line x1="625" y1="160" x2="625" y2="380" stroke="#5a4020" stroke-width="5"/>
+  <rect x="605" y="155" width="40" height="55" rx="6" fill="#3a2808"/>
+  <rect x="610" y="160" width="30" height="44" rx="4" fill="#ffdd60" opacity="0.85"/>
+  <rect x="603" y="152" width="44" height="7"  rx="2" fill="#2a1808"/>
+  <rect x="603" y="209" width="44" height="7"  rx="2" fill="#2a1808"/>
+  <circle cx="625" cy="156" r="5" fill="#c08020"/>
+  <circle cx="625" cy="182" r="40" fill="#ffcc60" opacity="0.18"/>
+
+  <!-- ── WARM LIGHT OVERLAY (atmospheric) ── -->
+  <rect x="0" y="0" width="800" height="500" fill="url(#warm_glow)"/>
+
+  <!-- ── GROUND / STONE PATH ── -->
+  <ellipse cx="400" cy="480" rx="380" ry="60" fill="url(#floor)"/>
+  <path d="M 80,440 C 200,420 600,420 720,440 L 800,500 L 0,500 Z" fill="#1a1208"/>
+  <!-- Stone tiles -->
+  <g stroke="#2a1808" stroke-width="1" fill="#221508" opacity="0.7">
+    <rect x="280" y="430" width="55" height="30" rx="3"/>
+    <rect x="340" y="430" width="55" height="30" rx="3"/>
+    <rect x="400" y="430" width="55" height="30" rx="3"/>
+    <rect x="460" y="430" width="55" height="30" rx="3"/>
+    <rect x="308" y="462" width="55" height="25" rx="3"/>
+    <rect x="368" y="462" width="55" height="25" rx="3"/>
+    <rect x="428" y="462" width="55" height="25" rx="3"/>
+  </g>
+
+  <!-- ── BIRTHDAY TABLE ── -->
+  <rect x="330" y="375" width="140" height="10" rx="3" fill="#5a3818"/>
+  <line x1="342" y1="385" x2="342" y2="425" stroke="#4a2e10" stroke-width="6"/>
+  <line x1="458" y1="385" x2="458" y2="425" stroke="#4a2e10" stroke-width="6"/>
+  <!-- Table cloth -->
+  <path d="M 324,375 C 330,365 470,365 476,375 L 476,382 C 470,372 330,372 324,382 Z"
+        fill="#e0c8a0"/>
+  <rect x="328" y="368" width="144" height="8" rx="2" fill="#d4b888" stroke="#b8985c" stroke-width="0.8"/>
+
+  <!-- ── BIRTHDAY CAKE ── -->
+  <!-- Cake base layer -->
+  <ellipse cx="400" cy="366" rx="38" ry="10" fill="#f0d0a0"/>
+  <rect x="362" y="340" width="76" height="27" rx="4" fill="#e0b888"/>
+  <ellipse cx="400" cy="340" rx="38" ry="10" fill="#f0c890"/>
+  <!-- Middle layer -->
+  <rect x="368" y="318" width="64" height="23" rx="4" fill="#e8d0a8"/>
+  <ellipse cx="400" cy="318" rx="32" ry="8" fill="#f8e0b8"/>
+  <!-- Top layer -->
+  <rect x="376" y="300" width="48" height="19" rx="4" fill="#f0e0c0"/>
+  <ellipse cx="400" cy="300" rx="24" ry="6.5" fill="url(#cake_fr)"/>
+  <!-- Frosting drips -->
+  <path d="M 372,340 C 374,350 372,356 374,363" fill="none" stroke="#f8f4e8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 388,339 C 389,348 388,355 390,362" fill="none" stroke="#f8f4e8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 412,339 C 411,348 412,355 410,362" fill="none" stroke="#f8f4e8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 428,340 C 426,350 428,356 426,363" fill="none" stroke="#f8f4e8" stroke-width="3" stroke-linecap="round"/>
+  <!-- Decoration dots on cake -->
+  <circle cx="382" cy="352" r="3" fill="#e07070"/>
+  <circle cx="400" cy="350" r="3" fill="#70a8e0"/>
+  <circle cx="418" cy="352" r="3" fill="#e07070"/>
+  <circle cx="385" cy="330" r="2.5" fill="#c8a0e0"/>
+  <circle cx="415" cy="330" r="2.5" fill="#80c880"/>
+  <!-- Candles -->
+  <rect x="389" y="282" width="5" height="18" rx="2" fill="#f8d080"/>
+  <rect x="399" y="280" width="5" height="20" rx="2" fill="#a0d8f0"/>
+  <rect x="409" y="282" width="5" height="18" rx="2" fill="#f8d080"/>
+  <!-- Candle flames -->
+  <ellipse cx="391.5" cy="280" rx="3" ry="5" fill="#ffee60" opacity="0.9"/>
+  <ellipse cx="401.5" cy="278" rx="3" ry="5" fill="#ffee60" opacity="0.9"/>
+  <ellipse cx="411.5" cy="280" rx="3" ry="5" fill="#ffee60" opacity="0.9"/>
+  <ellipse cx="391.5" cy="278" rx="1.5" ry="2.5" fill="white" opacity="0.8"/>
+  <ellipse cx="401.5" cy="276" rx="1.5" ry="2.5" fill="white" opacity="0.8"/>
+  <ellipse cx="411.5" cy="278" rx="1.5" ry="2.5" fill="white" opacity="0.8"/>
+  <!-- Candle glow -->
+  <circle cx="400" cy="280" r="22" fill="#ffcc60" opacity="0.22"/>
+  <!-- Cake glow overlay -->
+  <rect x="0" y="0" width="800" height="500" fill="url(#cake_glow)"/>
+
+  <!-- ═══════════════════════ CHARACTER: TAEIL (left) ═══════════════════════ -->
+  <g transform="translate(188, 150)">
+    <!-- Shirt / body -->
+    <path d="M -55,340 C -70,310 -75,280 -70,260 L -42,240 L -22,260 L 0,250 L 0,340 Z"
+          fill="url(#check)" stroke="#2a1008" stroke-width="1"/>
+    <path d="M 0,250 L 22,260 L 42,240 L 70,260 C 75,280 70,310 55,340 L 0,340 Z"
+          fill="url(#check)" stroke="#2a1008" stroke-width="1"/>
+    <!-- Collar -->
+    <path d="M -18,250 L -14,270 L 0,258 L 14,270 L 18,250 Z" fill="url(#sk_t)"/>
+    <!-- Neck -->
+    <path d="M -12,238 L -12,252 C -12,258 -7,264 0,264 C 7,264 12,258 12,252 L 12,238 Z"
+          fill="url(#sk_t)" stroke="#c07848" stroke-width="0.8"/>
+
+    <!-- Head -->
+    <path d="M -58,100 C -60,62 -40,-8 0,-15 C 40,-8 60,62 58,100 C 60,135 42,168 0,173 C -42,168 -60,135 -58,100 Z"
+          fill="url(#sk_t)" stroke="#c07848" stroke-width="1.2"/>
+    <!-- Cheek blush subtle -->
+    <ellipse cx="-40" cy="115" rx="12" ry="6" fill="#e07070" opacity="0.1"/>
+    <ellipse cx="40"  cy="115" rx="12" ry="6" fill="#e07070" opacity="0.1"/>
+
+    <!-- Ears -->
+    <path d="M -58,90 C -64,88 -67,96 -66,105 C -65,114 -60,118 -55,116 C -50,114 -50,106 -52,99 Z"
+          fill="#e8a878" stroke="#c07848" stroke-width="0.9"/>
+    <path d="M 58,90 C 64,88 67,96 66,105 C 65,114 60,118 55,116 C 50,114 50,106 52,99 Z"
+          fill="#e8a878" stroke="#c07848" stroke-width="0.9"/>
+
+    <!-- Hair back -->
+    <path d="M -55,88 C -58,50 -40,-10 0,-16 C 40,-10 58,50 55,88 C 52,62 44,28 28,12 C 15,0 0,-4 -14,0 C -30,8 -50,32 -55,65 Z"
+          fill="url(#h_dark)"/>
+    <!-- Hair main -->
+    <path d="M -56,85 C -58,48 -40,-12 0,-18 C 40,-12 58,48 56,85 C 53,58 44,24 28,10 C 14,-2 0,-6 -12,0 C -28,8 -48,34 -56,60 Z"
+          fill="url(#h_dark)"/>
+    <!-- Hair side strands -->
+    <path d="M -56,72 C -54,54 -48,36 -40,22 C -46,38 -52,56 -54,80 Z" fill="#1e0e04"/>
+    <path d="M 56,72 C 54,54 48,36 40,22 C 46,38 52,56 54,80 Z" fill="#1e0e04"/>
+    <!-- Hair highlight -->
+    <path d="M -12,-2 C -4,-8 8,-8 16,-3 C 8,-6 0,-7 -12,-2 Z" fill="#6a3e18" opacity="0.5"/>
+
+    <!-- Eyebrows -->
+    <path d="M -44,64 C -36,58 -26,56 -14,59" fill="none" stroke="#1a0a04" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 14,59 C 26,56 36,58 44,64" fill="none" stroke="#1a0a04" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Eyes -->
+    <ellipse cx="-28" cy="88" rx="14" ry="10" fill="#fff8f0"/>
+    <ellipse cx="-28" cy="89" rx="9" ry="9" fill="#2e1808"/>
+    <ellipse cx="-28" cy="90" rx="5" ry="5.5" fill="#0d0704"/>
+    <ellipse cx="-32" cy="84" rx="3" ry="2.2" fill="white" opacity="0.9"/>
+    <path d="M -42,82 C -36,76 -22,76 -14,82" fill="none" stroke="#0a0604" stroke-width="2.8" stroke-linecap="round"/>
+
+    <ellipse cx="28"  cy="88" rx="14" ry="10" fill="#fff8f0"/>
+    <ellipse cx="28"  cy="89" rx="9" ry="9" fill="#2e1808"/>
+    <ellipse cx="28"  cy="90" rx="5" ry="5.5" fill="#0d0704"/>
+    <ellipse cx="24"  cy="84" rx="3" ry="2.2" fill="white" opacity="0.9"/>
+    <path d="M 14,82 C 20,76 36,76 42,82" fill="none" stroke="#0a0604" stroke-width="2.8" stroke-linecap="round"/>
+
+    <!-- GLASSES (large round — THE distinctive feature) -->
+    <ellipse cx="-28" cy="88" rx="24" ry="21" fill="#e8f0ff" opacity="0.07"/>
+    <ellipse cx="28"  cy="88" rx="24" ry="21" fill="#e8f0ff" opacity="0.07"/>
+    <ellipse cx="-28" cy="88" rx="24" ry="21" fill="none" stroke="#111" stroke-width="4.5"/>
+    <ellipse cx="28"  cy="88" rx="24" ry="21" fill="none" stroke="#111" stroke-width="4.5"/>
+    <line x1="0" y1="87" x2="0" y2="89" stroke="#111" stroke-width="4"/>
+    <path d="M -52,80 C -56,82 -60,86 -62,92" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 52,80 C 56,82 60,86 62,92" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+    <!-- Glasses lens shine -->
+    <path d="M -46,76 C -40,71 -30,70 -22,72" fill="none" stroke="white" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+    <path d="M  6,76 C  12,71  22,70  30,72" fill="none" stroke="white" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+
+    <!-- Nose -->
+    <path d="M -4,104 C -5,112 -5,118 -4,122 C -2,126 2,126 4,122 C 5,118 5,112 4,104"
+          fill="none" stroke="#c07040" stroke-width="1.1" opacity="0.5"/>
+
+    <!-- Mouth — soft surprised/wondering smile -->
+    <path d="M -14,136 C -8,143 8,143 14,136"
+          fill="none" stroke="#a86040" stroke-width="2" stroke-linecap="round"/>
+    <path d="M -14,136 C -10,141 10,141 14,136 C 10,145 -10,145 -14,136 Z"
+          fill="#d09068" opacity="0.3"/>
+
+    <!-- Arm reaching slightly toward Suhyeon -->
+    <path d="M 55,280 C 70,270 80,260 85,255" fill="none" stroke="#7a4c2a" stroke-width="18" stroke-linecap="round"/>
+    <path d="M 55,280 C 70,270 80,260 85,255" fill="none" stroke="url(#check)" stroke-width="14" stroke-linecap="round" opacity="0.8"/>
+    <!-- Hand -->
+    <ellipse cx="88" cy="252" rx="12" ry="11" fill="url(#sk_t)" stroke="#c07848" stroke-width="1"/>
+  </g>
+
+  <!-- ═══════════════════════ CHARACTER: SUHYEON (right) ═══════════════════ -->
+  <g transform="translate(548, 145)">
+    <!-- White top / body -->
+    <path d="M -55,340 C -70,305 -72,275 -65,255 L -40,240 L -20,258 L 0,250 L 0,340 Z"
+          fill="#f4efe8" stroke="#ccc4bc" stroke-width="1"/>
+    <path d="M 0,250 L 20,258 L 40,240 L 65,255 C 72,275 70,305 55,340 L 0,340 Z"
+          fill="#f4efe8" stroke="#ccc4bc" stroke-width="1"/>
+    <!-- Ruffle details -->
+    <path d="M -36,244 C -32,238 -24,235 -18,238 L -20,258 Z" fill="#e8e0d8" stroke="#ccc4bc" stroke-width="0.6"/>
+    <path d="M 36,244 C 32,238 24,235 18,238 L 20,258 Z" fill="#e8e0d8" stroke="#ccc4bc" stroke-width="0.6"/>
+    <!-- Collar -->
+    <path d="M -16,250 L -12,268 L 0,258 L 12,268 L 16,250 Z" fill="url(#sk_s)"/>
+    <!-- Neck -->
+    <path d="M -10,237 L -10,250 C -10,258 -5,264 0,264 C 5,264 10,258 10,250 L 10,237 Z"
+          fill="url(#sk_s)" stroke="#c8906a" stroke-width="0.8"/>
+
+    <!-- Necklace -->
+    <path d="M -34,268 C -20,276 20,276 34,268" fill="none" stroke="#d8d8e8" stroke-width="1.4" stroke-linecap="round"/>
+    <!-- Infinity pendant -->
+    <path d="M -5,274 C -5,270 -2,269 0,271 C 2,269 5,270 5,274 C 5,278 2,279 0,277 C -2,279 -5,278 -5,274 Z"
+          fill="none" stroke="#c8c8d8" stroke-width="1.2"/>
+
+    <!-- Head -->
+    <path d="M -56,100 C -58,63 -38,-6 0,-13 C 38,-6 58,63 56,100 C 58,135 40,168 0,173 C -40,168 -58,135 -56,100 Z"
+          fill="url(#sk_s)" stroke="#c8906a" stroke-width="1.2"/>
+    <!-- Warmth / glow on face (from lanterns) -->
+    <ellipse cx="-18" cy="120" rx="25" ry="18" fill="#ff9020" opacity="0.06"/>
+    <!-- Cheeks -->
+    <ellipse cx="-40" cy="118" rx="14" ry="8" fill="#e87070" opacity="0.14"/>
+    <ellipse cx="40"  cy="118" rx="14" ry="8" fill="#e87070" opacity="0.14"/>
+
+    <!-- Ears -->
+    <path d="M -56,92 C -62,90 -65,98 -64,107 C -63,116 -58,120 -53,118 C -48,116 -48,108 -50,101 Z"
+          fill="#eab888" stroke="#c07848" stroke-width="0.9"/>
+    <!-- Earring -->
+    <circle cx="-55" cy="108" r="3" fill="#d8d8e8" stroke="#a0a0b0" stroke-width="0.8"/>
+    <circle cx="-55" cy="107" r="1.2" fill="white" opacity="0.7"/>
+    <path d="M 56,92 C 62,90 65,98 64,107 C 63,116 58,120 53,118 C 48,116 48,108 50,101 Z"
+          fill="#eab888" stroke="#c07848" stroke-width="0.9"/>
+
+    <!-- Hair back (tied back, clean) -->
+    <path d="M -54,88 C -56,52 -38,-8 0,-14 C 38,-8 56,52 54,88 C 50,60 42,26 28,10 C 14,-2 0,-6 -12,0 C -28,8 -48,32 -54,62 Z"
+          fill="url(#h_dark)"/>
+    <path d="M -55,84 C -56,48 -38,-10 0,-16 C 38,-10 56,48 55,84 C 52,56 43,23 28,9 C 14,-3 0,-6 -13,-1 C -29,7 -48,34 -55,58 Z"
+          fill="url(#h_dark)"/>
+    <!-- Side strands -->
+    <path d="M -55,72 C -53,54 -46,36 -38,22 C -44,38 -50,56 -52,80 Z" fill="#160c04"/>
+    <path d="M 55,72 C 53,54 46,36 38,22 C 44,38 50,56 52,80 Z" fill="#160c04"/>
+    <!-- Ponytail -->
+    <path d="M 44,82 C 50,68 62,58 68,64 C 72,72 68,88 60,98 C 64,88 66,74 62,68 C 58,63 52,70 48,84 Z"
+          fill="url(#h_dark)"/>
+    <rect x="44" y="76" width="7" height="5" rx="2" fill="#160c04"/>
+    <!-- Hair highlight -->
+    <path d="M -14,-2 C -5,-8 8,-7 14,-2 C 6,-6 0,-7 -14,-2 Z" fill="#5a3018" opacity="0.5"/>
+
+    <!-- Eyebrows (clean arc) -->
+    <path d="M -44,64 C -36,58 -25,56 -14,59" fill="none" stroke="#1a0a04" stroke-width="2.8" stroke-linecap="round"/>
+    <path d="M 14,59 C 25,56 36,58 44,64" fill="none" stroke="#1a0a04" stroke-width="2.8" stroke-linecap="round"/>
+
+    <!-- Eyes (large, bright, warm glow) -->
+    <ellipse cx="-28" cy="87" rx="16" ry="12" fill="#fff8f0"/>
+    <ellipse cx="-27" cy="88" rx="10" ry="10" fill="#1e1008"/>
+    <ellipse cx="-27" cy="89" rx="5.5" ry="6" fill="#0a0604"/>
+    <ellipse cx="-31" cy="83" rx="3.8" ry="2.8" fill="white" opacity="0.95"/>
+    <ellipse cx="-22" cy="93" rx="2" ry="1.5" fill="white" opacity="0.55"/>
+    <!-- Warm reflection from candles -->
+    <ellipse cx="-24" cy="90" rx="2" ry="1.5" fill="#ffcc60" opacity="0.25"/>
+    <path d="M -44,80 C -38,73 -22,73 -14,80" fill="none" stroke="#0a0604" stroke-width="3" stroke-linecap="round"/>
+    <path d="M -44,78 C -38,73 -22,73 -14,78" fill="none" stroke="#2a1408" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+    <ellipse cx="28"  cy="87" rx="16" ry="12" fill="#fff8f0"/>
+    <ellipse cx="27"  cy="88" rx="10" ry="10" fill="#1e1008"/>
+    <ellipse cx="27"  cy="89" rx="5.5" ry="6" fill="#0a0604"/>
+    <ellipse cx="23"  cy="83" rx="3.8" ry="2.8" fill="white" opacity="0.95"/>
+    <ellipse cx="32"  cy="93" rx="2" ry="1.5" fill="white" opacity="0.55"/>
+    <ellipse cx="26"  cy="90" rx="2" ry="1.5" fill="#ffcc60" opacity="0.25"/>
+    <path d="M 14,80 C 20,73 36,73 44,80" fill="none" stroke="#0a0604" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 14,78 C 20,73 36,73 44,78" fill="none" stroke="#2a1408" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+    <!-- Nose -->
+    <path d="M -3,110 C -4,117 -3,122 0,122 C 3,122 4,117 3,110"
+          fill="none" stroke="#b07040" stroke-width="1" opacity="0.5"/>
+    <ellipse cx="-4" cy="120" rx="1.8" ry="1.1" fill="#a06030" opacity="0.3"/>
+    <ellipse cx="4"  cy="120" rx="1.8" ry="1.1" fill="#a06030" opacity="0.3"/>
+
+    <!-- Mouth — warm open smile, genuinely happy -->
+    <path d="M -16,132 C -8,141 8,141 16,132"
+          fill="none" stroke="#a86040" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M -14,132 C -8,138 8,138 14,132 C 9,142 -9,142 -14,132 Z"
+          fill="white" opacity="0.5"/>
+    <path d="M -16,132 C -18,128 -20,130 -18,134" fill="none" stroke="#a06038" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M 16,132 C 18,128 20,130 18,134" fill="none" stroke="#a06038" stroke-width="1.4" stroke-linecap="round"/>
+
+    <!-- Arm gesture (slightly toward Taeil) -->
+    <path d="M -55,278 C -68,268 -78,258 -82,252" fill="none" stroke="#e8c0a0" stroke-width="16" stroke-linecap="round"/>
+    <path d="M -55,278 C -68,268 -78,258 -82,252" fill="none" stroke="#f4efe8" stroke-width="12" stroke-linecap="round" opacity="0.7"/>
+    <!-- Hand -->
+    <ellipse cx="-85" cy="249" rx="12" ry="11" fill="url(#sk_s)" stroke="#c07848" stroke-width="1"/>
+  </g>
+
+  <!-- ── MAGICAL PARTICLES ── -->
+  <!-- Floating sparkles around them -->
+  <g opacity="0.8">
+    <circle cx="320" cy="200" r="3" fill="#ffee80"/>
+    <circle cx="318" cy="200" r="6" fill="#ffee80" opacity="0.2"/>
+    <circle cx="480" cy="190" r="3" fill="#ffee80"/>
+    <circle cx="480" cy="190" r="7" fill="#ffee80" opacity="0.18"/>
+    <circle cx="350" cy="250" r="2" fill="#80e8ff"/>
+    <circle cx="350" cy="250" r="5" fill="#80e8ff" opacity="0.2"/>
+    <circle cx="450" cy="240" r="2" fill="#ff80c8"/>
+    <circle cx="450" cy="240" r="5" fill="#ff80c8" opacity="0.18"/>
+    <circle cx="290" cy="310" r="2.5" fill="#ffcc60"/>
+    <circle cx="510" cy="300" r="2.5" fill="#ffcc60"/>
+    <circle cx="380" cy="180" r="2" fill="#c8a0ff"/>
+    <circle cx="420" cy="175" r="2" fill="#c8a0ff"/>
+    <!-- Diamond sparkles (4-point) -->
+    <path d="M 300,230 L 302,225 L 304,230 L 302,235 Z" fill="#fff8a0" opacity="0.8"/>
+    <path d="M 498,222 L 500,217 L 502,222 L 500,227 Z" fill="#fff8a0" opacity="0.8"/>
+    <path d="M 260,280 L 262,274 L 264,280 L 262,286 Z" fill="#a0f0ff" opacity="0.7"/>
+    <path d="M 538,275 L 540,269 L 542,275 L 540,281 Z" fill="#a0f0ff" opacity="0.7"/>
+  </g>
+
+  <!-- ── BIRTHDAY TEXT BANNER ── -->
+  <path d="M 270,68 C 290,58 510,58 530,68 L 530,95 C 510,88 290,88 270,95 Z"
+        fill="#ffd060" stroke="#c09020" stroke-width="1.5"/>
+  <text x="400" y="87" text-anchor="middle" font-family="'Noto Sans KR', serif" font-size="18"
+        fill="#6a3808" font-weight="bold" letter-spacing="3">생일 축하해 🎂</text>
+
+  <!-- ── FINAL LIGHT ATMOSPHERE ── -->
+  <!-- Central warm radiance from the couple area -->
+  <ellipse cx="400" cy="300" rx="220" ry="180" fill="#ffaa30" opacity="0.07"/>
+  <!-- Ground glow from candles -->
+  <ellipse cx="400" cy="420" rx="160" ry="50" fill="#ffcc60" opacity="0.12"/>
+</svg>

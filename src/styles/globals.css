@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Korean font loaded via <link> in _app.tsx */
+
+/* ─── Reset & base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+html, body, #__next {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #0d0d2b;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  touch-action: none; /* prevent scroll bounce on iOS */
+}
+
+/* ─── Canvas container ─── */
+#game-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#game-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ─── UI overlay ─── */
+#ui-root {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ─── Scrollbar hide ─── */
+::-webkit-scrollbar { display: none; }
+
+canvas { outline: none; }
+
+/* ─── RPG dialogue box (legacy class kept for any remnant usage) ─── */
+.dialogue-box {
+  background: linear-gradient(160deg, rgba(10,14,38,0.95), rgba(6,8,22,0.97));
+  border: 1px solid rgba(200,160,60,0.45);
+  border-radius: 10px;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+/* ─── Animations ─── */
+
+/* Interact prompt badge pulse */
+@keyframes promptPulse {
+  0%, 100% { opacity: 0.88; transform: translateX(-50%) scale(1.00); }
+  50%       { opacity: 1.00; transform: translateX(-50%) scale(1.04); }
+}
+
+/* Dialogue advance hint bounce */
+@keyframes hintBounce {
+  0%, 100% { transform: translateY(0);   opacity: 0.70; }
+  50%       { transform: translateY(3px); opacity: 1.00; }
+}
+
+/* Blinking typewriter cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Desktop hint bar fade-in then fade-out */
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  10%  { opacity: 1; transform: translateX(-50%) translateY(0);    }
+  80%  { opacity: 1; transform: translateX(-50%) translateY(0);    }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+}

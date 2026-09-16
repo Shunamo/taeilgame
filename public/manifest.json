@@ -1,0 +1,17 @@
+{
+  "name": "별빛 마을 어드벤처",
+  "short_name": "별빛 마을",
+  "description": "노태일을 위한 특별한 RPG",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#0d0d2b",
+  "theme_color": "#0d0d2b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
